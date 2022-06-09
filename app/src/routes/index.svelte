@@ -1,4 +1,5 @@
 <script>
+
     import { OnMount } from 'fractils'    
     import Typewriter from 'svelte-typewriter'
  
@@ -6,15 +7,14 @@
     import { flip } from 'svelte/animate'
     import { onMount } from 'svelte';
     import { reveal } from 'svelte-reveal';
+    
 
     // ------ Animation ------- //
     import { afterUpdate } from 'svelte';
 
     let show = false;
 
-    afterUpdate(() => {
-        show = true;
-    });
+    afterUpdate(() => {show = true;});
     // ------ --------- ------- //
 
     // Pass Variables to HTML
@@ -52,7 +52,12 @@
             countTimes++;
         }
     }
+
+
+
+
 </script>
+
 
 
 <svelte:head>
@@ -108,6 +113,7 @@
         <div class="text-2xl text-center mb-6 md:p-6 md:m-6" use:reveal={{ transition: "fly" }}>
             {@html introText}
         </div>
+
 
         <div class="overflow-x-auto">
             <table class="table w-full">
