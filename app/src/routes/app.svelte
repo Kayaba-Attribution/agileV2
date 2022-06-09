@@ -1,50 +1,69 @@
 <script>
 	import { onMount } from 'svelte';
-  import Chart from 'chart.js/auto';
+  import Chart from './Chart.svelte';
 
-  function createChart() {
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+  let data = [1,2,3,4,5,6]
+
+  function modifyData(i, delta){
+    delta ? data[i]++ : data[i]--
   }
 
-	onMount(createChart);
+  function reset(){
+    let newDataLength = getRandomInt(1,8)
+    data = [1,2,3,4,5,6]
+    // for (let i = 0; i < newDataLength; i++) {
+    //   data[i]
+      
+    // }
+  }
+
+  function randomize(){
+    for (let i = 0; i < data.length; i++) {
+      data[i] = getRandomInt(-10,10) 
+    }
+  }
+
+  // Helpers
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+
+
 </script>
 
 <div class="mt-14">
-  <canvas id="myChart" width="2" height="1"></canvas>
+  <div class="text-2xl text-center m-8">
+    Change the values with by clicking the arrows below or click the randomize button and see the chart change!
+  </div>
+  
+  <div class="flex items-center justify-center p- space-x-4">
+    <button on:click={reset} class="btn btn-outline btn-info">Reset!</button>
+    <button on:click={randomize} class="btn btn-outline btn-info">Randomize!</button>
+  </div>
+
+  <div class="flex space-x-5 items-center mr-5">
+
+    <div class="grid columns-1 space-y-5">
+      {#each data as item, i}
+         <!-- content here -->
+        <div class="flex items-center">
+          <div class="mr-2">
+            <p on:click={() => modifyData(i, true)}  class="text-center btn-outline btn-success w-8">⬆️</p>
+            <p on:click={() => modifyData(i, false)} class="text-center btn-outline btn-error w-8">⬇️</p>
+          </div>
+          <input bind:value={data[i]} type="text" placeholder="Type here" class="input input-bordered input-info w-20 max-w-xs" />
+        </div>
+
+      {:else}
+         <!-- empty list -->
+      {/each}
+    </div>
+    
+    <Chart {data}/>
+  </div>
 </div>
 
 

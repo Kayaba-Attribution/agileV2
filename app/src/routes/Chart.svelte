@@ -1,16 +1,22 @@
 <script>
-	import { onMount } from 'svelte';
+  import { afterUpdate, onMount } from 'svelte';
   import Chart from 'chart.js/auto';
 
+  export let data;
+
+  let ctx;
+  let myChart;
+
   function createChart() {
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
+    ctx = document.getElementById('myChart').getContext('2d');
+    if(myChart) myChart.destroy();
+    myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
             datasets: [{
                 label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                data,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -40,11 +46,11 @@
     });
   }
 
-	onMount(createChart);
+	afterUpdate(createChart);
 </script>
 
-<div class="mt-14">
-  <canvas id="myChart" width="2" height="1"></canvas>
-</div>
+
+<canvas id="myChart" width="2" height="1"></canvas>
+
 
 
