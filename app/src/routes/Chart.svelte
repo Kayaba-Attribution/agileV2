@@ -1,6 +1,6 @@
 <script>
   import { afterUpdate, onMount } from 'svelte';
-  import Chart from 'chart.js/auto';
+  import Chart from 'chart.js/auto/auto.js';
 
   export let data;
 
