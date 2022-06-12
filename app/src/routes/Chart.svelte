@@ -49,7 +49,6 @@
 	afterUpdate(createChart);
 </script>
 
-
 <canvas id="myChart" width="2" height="1" class="my-5"></canvas>
 
 

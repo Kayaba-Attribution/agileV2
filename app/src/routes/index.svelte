@@ -37,7 +37,7 @@
 
   <div class="flex flex-col-reverse w-full lg:flex-row space-x-5 items-center mr-5">
 
-    <div class="grid columns-1 space-y-5 my-5">
+    <div class="grid grid-rows-2 grid-flow-col md:flex md:flex-col md:space-y-5 my-5">
       {#each data as item, i}
          <!-- content here -->
         <div class="flex items-center">
