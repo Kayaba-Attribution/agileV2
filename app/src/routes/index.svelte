@@ -23,6 +23,10 @@
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
+  let chosenChart = "bar"
+  function changeChart(_type) {
+    chosenChart = _type
+  }
 </script>
 
 <div class="mt-14">
@@ -33,6 +37,14 @@
   <div class="flex items-center justify-center space-x-4">
     <button on:click={reset} class="btn btn-outline btn-info">Reset!</button>
     <button on:click={randomize} class="btn btn-outline btn-info">Randomize!</button>
+  </div>
+
+  <div class="flex items-center justify-center space-x-4 my-3">
+    <button on:click={() => changeChart("bar")} class="btn btn-outline btn-info">Bars</button>
+    <button on:click={() => changeChart("line")} class="btn btn-outline btn-info">Lines</button>
+    <button on:click={() => changeChart("radar")} class="btn btn-outline btn-info">Radar</button>
+    <button on:click={() => changeChart("pie")} class="btn btn-outline btn-info">PieChart</button>
+    <button on:click={() => changeChart("polarArea")} class="btn btn-outline btn-info">polarArea</button>
   </div>
 
   <div class="flex flex-col-reverse w-full lg:flex-row space-x-5 items-center mr-5">
@@ -53,6 +65,6 @@
       {/each}
     </div>
     
-    <Chart {data}/>
+    <Chart data={data} chartType={chosenChart}/>
   </div>
 </div>

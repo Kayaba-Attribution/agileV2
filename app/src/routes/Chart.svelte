@@ -3,6 +3,7 @@
   import Chart from 'chart.js/auto/auto.js';
 
   export let data;
+  export let chartType;
 
   let ctx;
   let myChart;
@@ -11,7 +12,7 @@
     ctx = document.getElementById('myChart').getContext('2d');
     if(myChart) myChart.destroy();
     myChart = new Chart(ctx, {
-        type: 'bar',
+        type: chartType,
         data: {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
             datasets: [{
