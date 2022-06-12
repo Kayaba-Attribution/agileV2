@@ -43,6 +43,10 @@
     <button on:click={() => changeChart("bar")} class="btn btn-outline btn-info">Bars</button>
     <button on:click={() => changeChart("line")} class="btn btn-outline btn-info">Lines</button>
     <button on:click={() => changeChart("radar")} class="btn btn-outline btn-info">Radar</button>
+ 
+  </div>
+
+  <div class="flex items-center justify-center space-x-4 my-3">
     <button on:click={() => changeChart("pie")} class="btn btn-outline btn-info">PieChart</button>
     <button on:click={() => changeChart("polarArea")} class="btn btn-outline btn-info">polarArea</button>
   </div>
