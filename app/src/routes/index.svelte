@@ -30,14 +30,14 @@
     Change the values with by clicking the arrows below or click the randomize button and see the chart change!
   </div>
   
-  <div class="flex items-center justify-center p- space-x-4">
+  <div class="flex items-center justify-center space-x-4">
     <button on:click={reset} class="btn btn-outline btn-info">Reset!</button>
     <button on:click={randomize} class="btn btn-outline btn-info">Randomize!</button>
   </div>
 
-  <div class="flex space-x-5 items-center mr-5">
+  <div class="flex flex-col-reverse w-full lg:flex-row space-x-5 items-center mr-5">
 
-    <div class="grid columns-1 space-y-5">
+    <div class="grid columns-1 space-y-5 my-5">
       {#each data as item, i}
          <!-- content here -->
         <div class="flex items-center">
